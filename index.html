@@ -1,1 +1,87 @@
-Shu's Github Page
+<style type="text/css">
+body {
+ background:#1d1d19 !important;
+ color:#CFCFC2 !important;
+}
+
+a {
+  color:#CFCFC2 !important;
+}
+
+
+.navbar-custom {
+  background:#141411;
+  color:#CFCFC2;
+}
+
+.navbar-brand {
+  color:#CFCFC2;
+}
+
+.jumbotron {
+ background-color:#272822 !important;
+ color:#CFCFC2 !important;
+ padding-top:5px !important; 
+ padding-left:10px !important; 
+ padding-right:10px !important;
+}
+
+.list-group-item {
+  background-color:#272822 !important;
+  color:#CFCFC2 !important;
+  border: 0px !important;
+}
+
+
+</style>
+
+<!-- navbar #141411 -->
+<!-- selection #49483E -->
+
+<html ng-app="githubpage">
+<head>
+<title> Shu's Github Page is under construction </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.js"></script>
+<script src="app.js"></script>
+</head>
+  <body>
+    <div class="container-fluid">
+     <div class="row">
+      <div class="navbar navbar-custom">
+        <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+         </button>
+         <a class="navbar-brand" href="#/">Shu Chen's Github Page</a>
+       </div>
+       <div class="navbar-collapse collapse">
+         <ul class="nav navbar-nav navbar-right">
+           <li><a href="#/messages">Message me</a></li>
+           <!-- <li><a ng-click="signOut()">Sign out</a></li> -->
+         </ul>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <div class="row">
+  <div class="col-md-3" style="padding-top:0px; padding-left:20px; padding-right:0px;">
+    <div class="container-fluid">
+        <ul class="list-group">
+          <li class="list-group-item"><a href="#/profile">Profile</a></li>
+          <li class="list-group-item"><a href="https://github.com/shuchenku">Projects</a></li>
+          <li class="list-group-item"><a href="#/skills">Skills</a></li>
+          <li class="list-group-item"><a href="#/contact">Contact info</a></li>
+        </ul>
+      </div>
+  </div>
+  <div class="col-md-9" style="padding-top:0px; padding-left:0px; padding-right:20px;">
+    <div class="container-fluid">
+      <div ng-view></div>
+  </div>
+</div>
+</div>
+</body>
+
+</html>
