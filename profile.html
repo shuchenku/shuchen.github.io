@@ -1,11 +1,18 @@
+<style type="text/css">
+b {
+	font-style: italic;	
+}
+</style>
 <div class="row">
 	<div class="jumbotron">
- 		<h3>Resume</h3>
+		(click to expand sections)	
  		<ul ng-repeat="resume_item in resume_items" ng-click="expand(resume_item)">
-  			<li>{{resume_item.section}}</li>
-  			
-  			<li>{{resume_item.items}}</li>
-  			<li>{{resume_item.content}}</li>
+  			<h2>{{resume_item.section}}</h2>	
+  			<ul ng-show="resume_item.show" ng-repeat="item in resume_item.items">
+  				<li><h3>{{item.title}}</h3></li>
+  				<b>{{item.loc}}</b>
+  				<h4>{{item.content}}</h4>
+  			</ul>
   		</ul>
- </div>
+ 	</div>
  </div>

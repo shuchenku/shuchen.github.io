@@ -1,12 +1,17 @@
 angular.module('githubpage',['ngRoute'])
-.controller('MainCtrl',['$scope','resume_items',
-	function($scope,resume_items){
+.controller('MainCtrl',['$scope','resume_items','skills','contact',
+	function($scope,resume_items,skills,contact){
 
 		$scope.resume_items = resume_items;
-		$scope.expandables = {};
+		$scope.skills = skills;
+		$scope.contact = contact;
 
 		$scope.expand = function(list_items){
-			list_items.show=true
+			if (list_items.show==true) {
+				list_items.show=false;
+			} else {
+				list_items.show=true
+			}
 		}
 	}
 ])
@@ -25,10 +30,24 @@ angular.module('githubpage',['ngRoute'])
 			templateUrl: 'message.html',
 			controller: 'MsgCtrl'
 		})
+		.when('/skills', {
+			templateUrl: 'skills.html',
+			controller: 'MainCtrl'
+		})
+		.when('/contact', {
+			templateUrl: 'contact.html',
+			controller: 'MainCtrl'
+		})
 		.otherwise({
-   			redirectTo: '/'
+   			redirectTo: '/profile'
  		});
 	})
+.constant('skills',["Java","JavaScript","MIT Scheme","C++","Fortran","Python","Ruby on Rails",
+	"Sinatra","Angular.js","HTML","CSS","Bootstrap","Ionic Framework","Oracle","PostgreSQL",
+	"Matlab","Weka","ArcGIS 10","Web application development","mobile application development",
+	"RESTful webservice design","Machine learning","Data mining", "text mining (Apache Solr) ",
+	"Atmospheric Modeling","Atmospheric Physics","Glaciology","SPSS","Surfer","Grads",
+	"OriginLab","Kingdom Suite"])
 .constant('resume_items',
   [{section: "EDUCATION", 
  items: [{title: "Brandeis University", 
@@ -49,7 +68,7 @@ angular.module('githubpage',['ngRoute'])
  		}]},
 {section: "EXPERIENCE",
  items: [{title: "Teaching Assistant (Operating Systems)", 
- 		loc:"Brandies University, August 2015 – present", 
+ 		loc:"Brandeis University, August 2015 – present", 
  		content:"– Grade assignments; hold office hours and answer students’ questions\n– Programming assignment design, hosting tutorial sessions, and provide sample solutions"
  		},
  		{title: "Contributor (Application Developer)", 
@@ -81,4 +100,6 @@ items: [{title: "Synoptic Scale Weather Patterns Associated with Annual Snow Acc
  		loc:"The International Conference on Advanced Cloud and Big Data (CBD), Southeast University, Nanjing, China, 13 - 15, December 2013", 
  		content:"Authors: P. Xia, J. Xiao, S. Chen\n"
  		}]}])
+.constant('contact',[{title:"Address:",content:"60 Hope Ave, Apt 101\nWaltham, Massachusetts, 02453"},
+		{title:"Tel:",content:"(785)424-0893"}])
 
