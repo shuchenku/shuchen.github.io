@@ -1,12 +1,20 @@
+<style type="text/css">
+pre {
+  background-color: #49483E;
+  border-color: #49483E;
+  color:#CFCFC2;
+}
+</style>
+
 <div class="row">
 	<div class="jumbotron">
  		<ul ng-repeat="info in contact">
   			<h3>{{info.title}}</h3>
-        <h4>{{info.content}}</h4>
+        <h4><pre>{{info.content}}</pre></h4>
   	</ul>
     <ul>
       <h3>Email:</h3>
-      <h4><a href="mailto:shuchen@brandeis.edu">shuchen@brandeis.edu</a></h4>
+      <h4><pre><a href="mailto:shuchen@brandeis.edu">shuchen@brandeis.edu</a></pre></h4>
     </ul>
  	</div>
  </div>

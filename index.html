@@ -32,55 +32,64 @@ a {
 }
 </style>
 
+<script>
+$('.dropdown-toggle').dropdown()
+</script>
+
 <!-- navbar #141411 -->
 <!-- selection #49483E -->
 
 <html ng-app="githubpage">
 <head>
-<title> Shu's Github Page is under construction </title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.js"></script>
-<script src="app.js"></script>
+  <title> Shu's Github Page is under construction </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.js"></script>
+  <script src="app.js"></script>
 </head>
-  <body>
-    <div class="container-fluid">
-     <div class="row">
-      <div class="navbar navbar-custom">
-        <div class="navbar-header">
-         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-         </button>
-         <a class="navbar-brand" href="#/">Shu Chen's Github Page is UNDER CONSTRUCTION</a>
-       </div>
-       <div class="navbar-collapse collapse">
-         <ul class="nav navbar-nav navbar-right">
-           <li><a href="#/messages">Message me</a></li>
-           <!-- <li><a ng-click="signOut()">Sign out</a></li> -->
-         </ul>
-       </div>
+<body>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="navbar navbar-custom">
+      <div class="navbar-header">
+       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+       </button>
+       <a class="navbar-brand" href="#/">Shu Chen's Github Page is UNDER CONSTRUCTION</a>
      </div>
-   </div>
- </div>
+     <div class="navbar-collapse collapse" style="padding-top:8px">
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact Shu
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#/message">Send me a message</a></li>
+          <li><a href="mailto:shuchen@brandeis.edu">Email me</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
- <div class="row">
+<div class="row">
   <div class="col-md-3" style="padding-top:0px; padding-left:20px; padding-right:0px;">
     <div class="container-fluid">
-        <ul class="list-group">
-          <li class="list-group-item"><a href="#/profile">Profile</a></li>
-          <li class="list-group-item"><a href="#/skills">Skills</a></li>
-          <li class="list-group-item"><a href="https://github.com/shuchenku">Projects</a></li>
-          <li class="list-group-item"><a href="#/contact">Contact info</a></li>
-          <li class="list-group-item"><a href="https://www.linkedin.com/pub/shu-chen/34/9b2/b83">      
+      <ul class="list-group">
+        <li class="list-group-item"><a href="#/profile">Profile</a></li>
+        <li class="list-group-item"><a href="#/skills">Skills</a></li>
+        <li class="list-group-item"><a href="https://github.com/shuchenku">Projects</a></li>
+        <li class="list-group-item"><a href="#/contact">Contact info</a></li>
+        <li class="list-group-item"><a href="https://www.linkedin.com/pub/shu-chen/34/9b2/b83">      
           <img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_myprofile_160x33.png" width="160" height="33" border="0" alt="View Shu Chen's profile on LinkedIn"></a></li>
         </ul>
       </div>
+    </div>
+    <div class="col-md-9" style="padding-top:0px; padding-left:0px; padding-right:20px;">
+      <div class="container-fluid">
+        <div ng-view></div>
+      </div>
+    </div>
   </div>
-  <div class="col-md-9" style="padding-top:0px; padding-left:0px; padding-right:20px;">
-    <div class="container-fluid">
-      <div ng-view></div>
-  </div>
-</div>
-</div>
 </body>
 
 </html>

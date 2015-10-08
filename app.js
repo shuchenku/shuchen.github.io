@@ -44,7 +44,7 @@ angular.module('githubpage',['ngRoute'])
 	})
 .constant('skills',["Java","JavaScript","MIT Scheme","C++","Fortran","Python","Ruby on Rails",
 	"Sinatra","Angular.js","HTML","CSS","Bootstrap","Ionic Framework","Oracle","PostgreSQL",
-	"Matlab","Weka","ArcGIS 10","Web application development","mobile application development",
+	"Matlab","Weka","ArcGIS 10","Web application development","Mobile application development",
 	"RESTful webservice design","Machine learning","Data mining", "text mining (Apache Solr) ",
 	"Atmospheric Modeling","Atmospheric Physics","Glaciology","SPSS","Surfer","Grads",
 	"OriginLab","Kingdom Suite"])
@@ -64,42 +64,42 @@ angular.module('githubpage',['ngRoute'])
  		},
  		{title: "Nanjing University of Information Science and Technology", 
  		loc:"Nanjing, China", 
- 		content:"Bachelor of Science, Atmospheric Science (Atmospheric Physics), Graduated May 2010\nMajor GPA 83/100 Overall GPA 79/100"
+ 		content:"Bachelor of Science, Atmospheric Science (Atmospheric Physics), Graduated May 2010"+"\n"+"Major GPA 83/100 Overall GPA 79/100"
  		}]},
 {section: "EXPERIENCE",
  items: [{title: "Teaching Assistant (Operating Systems)", 
  		loc:"Brandeis University, August 2015 – present", 
- 		content:"– Grade assignments; hold office hours and answer students’ questions\n– Programming assignment design, hosting tutorial sessions, and provide sample solutions"
+ 		content:"– Grade assignments; hold office hours and answer students’ questions"+"\n"+"– Programming assignment design, hosting tutorial sessions, and provide sample solutions"
  		},
  		{title: "Contributor (Application Developer)", 
  		loc:"Project DressCode, Award winner of the Brandeis University SPARK Program, May 2015 – present", 
- 		content:"– Rails API Backend development; database design and RESTful API design\n– Frontend development using Angular.js"
+ 		content:"– Rails API Backend development; database design and RESTful API design"+"\n"+"– Frontend development using Angular.js"
  		},
  		{title: "Data Mining Engineer, Focus Technology Co., Ltd.", 
  		loc:"Nanjing, China, July 2013 – January 2014", 
- 		content:"– Managing business data using Oracle Database.\n– Studied and improved a hybrid recommender system that meets Made-in-China.com’s (a B2B E-Commerce platform operated by Focus Technology Co.) needs. Presented at The International Conference on Advanced Cloud and Big Data (CBD).\n– Text mining using Apache Solr; Assisted coworkers set up Solr Server and optimized the Chinese tokenizer."
+ 		content:"– Managing business data using Oracle Database."+"\n"+"– Studied and improved a hybrid recommender system that meets Made-in-China.com’s (a B2B E-Commerce platform operated by Focus Technology Co.) needs. Presented at The International Conference on Advanced Cloud and Big Data (CBD)."+"\n"+"– Text mining using Apache Solr; Assisted coworkers set up Solr Server and optimized the Chinese tokenizer."
  		},
  		{title: "Graduate Research Assistant, Center for Remote Sensing Of Ice Sheets (CReSIS)", 
  		loc:"Lawrence, Kansas, United States, August 2010 – December 2012 ", 
- 		content:"– Presented at International Symposium on Glaciers and Ice Sheets in a Warming Climate, IGS (International Glaciological Society), Fairbanks, Alaska, June 25 – 29, 2012\n– Processed CReSIS geolocated radar data using MATLAB and ArcGIS\n– Employed Self-Organizing Maps (SOM) to identify synoptic scale weather patterns impacting Greenland Ice Sheet’ accumulation\n– Guided an undergraduate student with his project and presentation as a Graduate Student Advisor during Research Experience for Undergraduates (REU) program by CReSIS, June 2011 – July 2011"
+ 		content:"– Presented at International Symposium on Glaciers and Ice Sheets in a Warming Climate, IGS (International Glaciological Society), Fairbanks, Alaska, June 25 – 29, 2012"+"\n"+"– Processed CReSIS geolocated radar data using MATLAB and ArcGIS"+"\n"+"– Employed Self-Organizing Maps (SOM) to identify synoptic scale weather patterns impacting Greenland Ice Sheet’ accumulation"+"\n"+"– Guided an undergraduate student with his project and presentation as a Graduate Student Advisor during Research Experience for Undergraduates (REU) program by CReSIS, June 2011 – July 2011"
  		},
  		{title: "Research Assistant", 
  		loc:"Lawrence, Kansas, United StatesNanjing University of Information Science and Technology, May 2008 – June 2010", 
- 		content:"– Participated in research projects including:\n•	Fog Damage Monitoring and Early Warning for Yangtze River Delta and Damage Assessment research (the Special Funds for Public Welfare of China);\n•	Extended Research of the Mechanism Model and Forecasting for Mesoscale Severe Weather Process Based on the Information Fidelity (Natural Science Foundation of China (NSFC));\n•	Observation and analysis of Summer Aerosol Characteristics in Various Functional Areas of Nanjing, supported by: National Basic Research Program (973 Program); Special Funds for Public Welfare of China; National College Students Innovation Program"
+ 		content:"– Participated in research projects including:"+"\n"+"•	Fog Damage Monitoring and Early Warning for Yangtze River Delta and Damage Assessment research (the Special Funds for Public Welfare of China);"+"\n"+"•	Extended Research of the Mechanism Model and Forecasting for Mesoscale Severe Weather Process Based on the Information Fidelity (Natural Science Foundation of China (NSFC));"+"\n"+"•	Observation and analysis of Summer Aerosol Characteristics in Various Functional Areas of Nanjing, supported by: National Basic Research Program (973 Program); Special Funds for Public Welfare of China; National College Students Innovation Program"
  		}]},
 {section:"PUBLICATIONS/PRESENTATIONS",
 items: [{title: "Synoptic Scale Weather Patterns Associated with Annual Snow Accumulation Variability in North-Central Greenland (Presentation)", 
  		loc:"Program IGS (International Glaciological Society) Symposium, Fairbanks, Alaska, 25 - 29 June 2012", 
- 		content:"\n"
+ 		content:"Presenter: S. Chen"
  		},
  		{title: "Analysis of Summer Aerosol Characteristics in Various Functional Areas of Nanjing", 
  		loc:"Journal of Nanjing University of Information Science and Technology (natural science edition), 2010 Volume 2 (No.1)", 
- 		content:"Authors: H. Wang, B. Zhu, L Ma, S. Chen, C. Chen, P. Wang\n"
+ 		content:"Authors: H. Wang, B. Zhu, L Ma, S. Chen, C. Chen, P. Wang"
  		},
  		{title: "An Application of Recommender System with Mingle-TopN Algorithm on B2B Platform", 
  		loc:"The International Conference on Advanced Cloud and Big Data (CBD), Southeast University, Nanjing, China, 13 - 15, December 2013", 
- 		content:"Authors: P. Xia, J. Xiao, S. Chen\n"
+ 		content:"Authors: P. Xia, J. Xiao, S. Chen"
  		}]}])
-.constant('contact',[{title:"Address:",content:"60 Hope Ave, Apt 101\nWaltham, Massachusetts, 02453"},
+.constant('contact',[{title:"Address:",content:"60 Hope Ave, Apt 101,"+"\n"+"Waltham, Massachusetts, 02453"},
 		{title:"Tel:",content:"(785)424-0893"}])
 
