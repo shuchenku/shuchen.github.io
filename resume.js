@@ -35,8 +35,7 @@ var resume_items = [
  		},
  		{title: "Research Assistant", 
  		loc:"Lawrence, Kansas, United StatesNanjing University of Information Science and Technology, May 2008 – June 2010", 
- 		content:"– Participated in research projects including:\n•	Fog Damage Monitoring and Early Warning for Yangtze River Delta and Damage Assessment research (the Special Funds for Public Welfare of China);\n•	Extended Research of the Mechanism Model and Forecasting for Mesoscale Severe Weather Process Based on the Information Fidelity (Natural Science Foundation of China (NSFC));\n•	Observation and analysis of Summer Aerosol Characteristics in Various Functional Areas of Nanjing, supported by: National Basic Research Program (973 Program); Special Funds for Public Welfare of China; National College Students Innovation Program"
- 		}]},
+ 		content:"– Participated in research projects including:\n\t• Fog Damage Monitoring and Early Warning for Yangtze River Delta and Damage Assessment research (the Special Funds for Public Welfare of China);\n\t• Extended Research of the Mechanism Model and Forecasting for Mesoscale Severe Weather Process Based on the Information Fidelity (Natural Science Foundation of China (NSFC));\n\t• Observation and analysis of Summer Aerosol Characteristics in Various Functional Areas of Nanjing, supported by: National Basic Research Program (973 Program); Special Funds for Public Welfare of China; National College Students Innovation Program"}]},
 {section:"PUBLICATIONS/PRESENTATIONS",
 items: [{title: "Synoptic Scale Weather Patterns Associated with Annual Snow Accumulation Variability in North-Central Greenland (Presentation)", 
  		loc:"Program IGS (International Glaciological Society) Symposium, Fairbanks, Alaska, 25 - 29 June 2012", 
