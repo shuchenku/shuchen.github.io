@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="jumbotron">
+		(click titles to expand sections)	
+   <ul ng-repeat="resume_item in resume_items" ng-click="expand(resume_item)">
+     <h2>{{resume_item.section}}</h2>	
+     <ul ng-show="resume_item.show" ng-repeat="item in resume_item.items">
+      <li><h3>{{item.title}}</h3></li>
+      <b>{{item.loc}}</b>
+      <h4><pre>{{item.content}}</pre></h4>
+    </ul>
+  </ul>
+</div>
+</div>
