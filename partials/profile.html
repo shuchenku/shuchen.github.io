@@ -1,13 +1,42 @@
-<div class="row">
-	<div class="jumbotron">
-		(click titles to expand sections)	
-   <ul ng-repeat="resume_item in resume_items" ng-click="expand(resume_item)">
-     <h2>{{resume_item.section}}</h2>	
-     <ul ng-show="resume_item.show" ng-repeat="item in resume_item.items">
-      <li><h3>{{item.title}}</h3></li>
-      <b>{{item.loc}}</b>
-      <h4><pre>{{item.content}}</pre></h4>
-    </ul>
-  </ul>
+<style>
+h2 {
+  color: #007edf !important
+}
+
+
+t {
+  color: #373737
+}
+</style>
+
+
+<div style="text-align: center">
+<h2>Hi, My name is Shu Chen.</h2>
+<h3>I am a Computer Science M.A. student at Brandeis University.</br>
+I am also working for Mobile Heartbeat LLC.</br>as a Software Engineering Intern.</br></h3>
+<h3>Before entering the field of Computer Science,</br>
+I received a M.S. in Atmospheric Science</br> from the University of Kansas</br>
+and a B.S in Atmospheric Science from</br> Nanjing University of Information Science and Technology</h3></br>
 </div>
-</div>
+
+<ul ng-repeat="resume_item in resume_items" ng-click="expand(resume_item)">
+ <h2 ng-show="!resume_item.show">&#9658 <t>{{resume_item.section}}</t></h2><h2 ng-show="resume_item.show">&#9660 <t>{{resume_item.section}}</t></h2> 
+ <ul ng-show="resume_item.show" ng-repeat="item in resume_item.items">
+  <li><h3>{{item.title}}</h3></li>
+  <b>{{item.loc}}</b>
+  <h4><pre>{{item.content}}</pre></h4>
+</ul>
+  <div ng-show="resume_item.show" d3-bars label="name" bar-height="30"></div>
+
+</ul>
+
+<!-- 
+<div style="margin-left: 3%" ng-click="expandChart(skills)">
+<h2 ng-show="!resume_item.show">&#9658 <t>SKILLS</t></h2><h2 ng-show="resume_item.show">&#9660 <t>SKILLS</t></h2> 
+  <div class="fluid-container" ng-show="skills.show" >
+    <div d3-bars label="name" bar-height="30"></div>
+  </div>
+</h2>
+</div> 
+  
+ -->

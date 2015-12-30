@@ -1,137 +1,30 @@
-angular.module('githubpage',['ui.router','d3'])
-.directive('d3Bars',['d3Service', function(d3Service) {
-	return {
-		restrict: 'EA',
-		scope: {
-		  data: "=",
-          label: "@",
-          onClick: "&"
-		},
-		link: function(scope, element, attrs) {
-			d3Service.d3().then(function(d3) {
-
-	          // hard-code data
-	          scope.data = [
-	          {name:"PostgreSQL",score:88},
-	          {name:"Ruby on Rails",score:88},
-	          {name:"Matlab",score:86},
-	          {name:"Java",score:85},
-	          {name:"Sinatra",score:85},
-	          {name:"HTML",score:85},
-	          {name:"Web application development",score:85},
-	          {name:"RESTful webservice design",score:85},
-	          {name:"Bootstrap",score:80},
-	          {name:"Weka",score:80},
-	          {name:"Angular.js",score:75},
-	          {name:"JavaScript",score:75},
-	          {name:"Oracle",score:75},
-	          {name:"Mobile application development",score:70},
-	          {name:"MIT Scheme",score:70},
-	          {name:"Machine learning",score:60},
-	          {name:"Data mining",score:60},
-	          {name:"CSS",score:60},
-	          {name:"ArcGIS 10",score:60},
-	          {name:"C++",score:50},
-	          {name:"Ionic Framework",score:50},
-	          {name:"Fortran",score:30},
-	          {name:"Python",score:30},
-	          {name:"Text mining",score:30},
-	          {name:"Atmospheric Modeling",score:80},
-	          {name:"Atmospheric Physics",score:75},
-	          {name:"OriginLab",score:70},
-	          {name:"Glaciology",score:50},
-	          {name:"Surfer",score:50},
-	          {name:"SPSS",score:50},
-	          {name:"Kingdom Suite",score:40},
-	          {name:"Grads",score:30},
-	          ];
-
-				var margin = parseInt(attrs.margin) || 20,
-				barHeight = parseInt(attrs.barHeight) || 20,
-				barPadding = parseInt(attrs.barPadding) || 5;
-
-				var svg = d3.select(element[0])
-				.append('svg')
-				.data(scope.data)
-				.style('width', '100%');
-
-	          // Browser onresize event
-	          window.onresize = function() {
-	          	scope.$apply();
-	          };
-
-	          // Watch for resize event
-	          scope.$watch(function() {
-	          	return angular.element(window)[0].innerWidth;
-	          }, function() {
-	          	scope.render(scope.data);
-	          });
-
-	          scope.render = function(data) {
-	            // our custom d3 code
-	            svg.selectAll('*').remove();
-
-	            if (!scope.data) return;
-
-	            // setup variables
-	            var width = d3.select(element[0]).node().offsetWidth - margin,
-	        	// calculate the height
-	        	height = scope.data.length * (barHeight + barPadding),
-	    	  	// Use the category20() scale function for multicolor support
-	    	  	color = d3.scale.category20(),
-	    	    // our xScale
-	    	    xScale = d3.scale.linear()
-	    	    .domain([0, d3.max(data, function(d) {
-	    	    	return d.score;
-	    	    })])
-	    	    .range([0, width]);
-
-	    	 // set the height based on the calculations above
-	    	 svg.attr('height', height);
-
-	    	 //create the rectangles for the bar chart
-	    	 svg.selectAll('rect')
-	    	 .data(scope.data).enter()
-	    	 .append('rect')
-	    	 .attr('height', barHeight)
-	    	 .attr('width', 140)
-	    	 .attr('x', Math.round(margin/2))
-	    	 .attr('y', function(d,i) {
-	    	 	return i * (barHeight + barPadding);
-	    	 })
-	    	 .attr('fill', function(d) { return color(d.score); })
-	    	 .transition()
-	    	 .duration(1000)
-	    	 .attr('width', function(d) {
-	    	 	return xScale(d.score);
-	    	 });
-
-	    	 svg.selectAll('text')
-              .data(scope.data)
-              .enter()
-                .append("text")
-                .attr("fill", "#fff")
-                .attr("y", function(d, i){return i * 35 + 22;})
-                .attr("x", 15)
-                .text(function(d){return d[scope.label]+ ": "+ d.score;})
-              .style('font-weight', 'bold')
-    	}
-    });
-}};
-}])
-.controller('basicController',['$scope','resume_items','skills','contact',
-	function($scope,resume_items,skills,contact){
+angular.module('githubpage',['ngAnimate','ui.router','d3'])
+.controller('basicController',['$rootScope','$scope','resume_items','contact',
+	function($rootScope,$scope,resume_items,contact){
 
 		$scope.resume_items = resume_items;
-		$scope.skills = skills;
 		$scope.contact = contact;
+		$scope.skills = "";
 
 		$scope.expand = function(list_items){
-			if (list_items.show==true) list_items.show=false;
-			else list_items.show=true;
+
+			if (list_items.show==true) {
+				list_items.show=false;
+			} else {
+				list_items.show=true;
+			}
+
+			if (list_items.section=="SKILLS" && !list_items.show) {
+				$rootScope.$broadcast("show it!");
+			}
 		}
-	}
-	])
+
+		$scope.expandChart = function(chart) {
+			$scope.expand(chart);
+			$rootScope.$broadcast("show it!");
+		}
+	}	
+])
 .controller('MsgCtrl',[
 	'$scope',
 	function($scope){}
@@ -161,18 +54,143 @@ angular.module('githubpage',['ui.router','d3'])
 		templateUrl: 'partials/contact.html',
 		controller: 'basicController'
 	})
+	.state('projects', {
+		url: '/projects',
+		templateUrl: 'partials/temp.html',
+		controller: 'basicController'
+	})
 	.state('temp', {
 		url: '/temp',
 		templateUrl: 'partials/temp.html',
 		controller: 'basicController'
 	})
 })
-.constant('skills',[{skill:"Java",rating:"85"},{skill:"JavaScript",rating:"75"},{skill:"MIT Scheme",rating:"60"},{skill:"C++",rating:"50"},{skill:"Fortran",rating:"30"},{skill:"Python",rating:"30"},{skill:"Ruby on Rails",rating:"85"},{skill:
-	"Sinatra",rating:"85"},{skill:"Angular.js",rating:"75"},{skill:"HTML",rating:"85"},{skill:"CSS",rating:"60"},{skill:"Bootstrap",rating:"80"},{skill:"Ionic Framework",rating:"50"},{skill:"Oracle",rating:"75"},{skill:"PostgreSQL",rating:"85"},{skill:
-		"Matlab",rating:""},{skill:"Weka",rating:""},{skill:"ArcGIS 10",rating:""},{skill:"Web application development",rating:""},{skill:"Mobile application development",rating:""},{skill:
-			"RESTful webservice design",rating:"85"},{skill:"Machine learning",rating:"60"},{skill:"Data mining",rating:"60"},{skill: "text mining (Apache Solr) ",rating:"30"},{skill:
-				"Atmospheric Modeling",rating:"80"},{skill:"Atmospheric Physics",rating:"75"},{skill:"Glaciology",rating:"50"},{skill:"SPSS",rating:"30"},{skill:"Surfer",rating:"50"},{skill:"Grads",rating:"30"},{skill:
-					"OriginLab",rating:"70"},{skill:"Kingdom Suite",rating:"40"}])
+.directive('d3Bars',['d3Service', function(d3Service) {
+	return {
+		restrict: 'EA',
+		scope: {
+		  data: "=",
+          label: "@",
+          onClick: "&",
+		},
+		link: function(scope, element, attrs) {
+			d3Service.d3().then(function(d3) {
+
+	          // hard-code data
+	        scope.data = [
+	          {name:"PostgreSQL",score:88},
+	          {name:"Ruby on Rails",score:87},
+	          {name:"Matlab",score:86},
+	          {name:"Java",score:85},
+	          {name:"Web application development",score:85},
+	          {name:"RESTful webservice design",score:84},
+	          {name:"Sinatra",score:83},
+	          {name:"HTML",score:82},
+	          {name:"Bootstrap",score:80},
+	          {name:"Weka",score:80},
+	          {name:"Angular.js",score:78},
+	          {name:"JavaScript",score:75},
+	          {name:"Oracle",score:72},
+	          {name:"Mobile application development",score:70},
+	          {name:"MIT Scheme",score:70},
+	          {name:"Machine learning",score:60},
+	          {name:"Data mining",score:58},
+	          {name:"CSS",score:56},
+	          {name:"ArcGIS 10",score:52},
+	          {name:"C++",score:50},
+	          {name:"Ionic Framework",score:50},
+	          {name:"Python",score:40},
+	          {name:"Fortran",score:30},
+	          {name:"Text mining",score:30},
+	          {name:"Atmospheric Modeling",score:80},
+	          {name:"Atmospheric Physics",score:75},
+	          {name:"OriginLab",score:70},
+	          {name:"Glaciology",score:50},
+	          {name:"Surfer",score:50},
+	          {name:"SPSS",score:45},
+	          {name:"Kingdom Suite",score:40},
+	          {name:"Grads",score:30},
+	        ];
+
+			var margin = parseInt(attrs.margin) || 20,
+			barHeight = parseInt(attrs.barHeight) || 20,
+			barPadding = parseInt(attrs.barPadding) || 5;
+
+			var svg = d3.select(element[0])
+			.append('svg')
+			.data(scope.data)
+			.style('width', '100%');
+
+	        // Browser onresize event
+	        window.onresize = function() {
+	          scope.$apply();
+	        };
+
+	        scope.$on("show it!", function() {
+	          console.log(d3.select(element[0]));
+			  scope.render(scope.data);
+	        })
+
+	        // Watch for resize event
+	        scope.$watch(function() {
+	          	return angular.element(window)[0].innerWidth;
+	          }, function() {
+	          	scope.render(scope.data);
+	          }
+	        );
+
+	        scope.render = function(data) {
+	          // our custom d3 code
+	          svg.selectAll('*').remove();
+
+	          if (!scope.data) return;
+	          // setup variables
+	          var width = d3.select(element[0]).node().parentNode.parentNode.offsetWidth,
+	          // calculate the height
+	          height = scope.data.length * (barHeight + barPadding),
+	    	  // Use the category20() scale function for multicolor support
+	    	  color = d3.scale.category20(),
+	    	  // our xScale
+	    	  xScale = d3.scale.linear()
+	    	  .domain([0, d3.max(data, function(d) {
+	    	  	return d.score;
+	    	  })])
+	    	  .range([0, width]);
+
+	    	 // set the height based on the calculations above
+	    	 svg.attr('height', height);
+
+	    	 //create the rectangles for the bar chart
+	    	 svg.selectAll('rect')
+	    	 .data(scope.data).enter()
+	    	 .append('rect')
+	    	 .attr('height', barHeight)
+	    	 .attr('width', 140)
+	    	 .attr('x', Math.round(margin/2))
+	    	 .attr('y', function(d,i) {
+	    	 	return i * (barHeight + barPadding);
+	    	 })
+	    	 .attr('fill', function(d) { return color(d.score); })
+	    	 .transition()
+	    	 .duration(1000)
+	    	 .attr('width', function(d) {
+	    	 	return xScale(d.score);
+	    	 });
+
+	    	 svg.selectAll('text')
+              .data(scope.data)
+              .enter()
+                .append("text")
+                .attr("fill", "#fff")
+                .attr("y", function(d, i){return i * 35 + 22;})
+                .attr("x", 15)
+                .text(function(d){return d[scope.label]+ ": "+ d.score;})
+              .style('font-weight', 'bold','font','Arial')
+              .style('font-size','16px')
+    	}
+    });
+}};
+}])
 .constant('resume_items',
 	[{section: "EDUCATION", 
 	items: [{title: "Brandeis University", 
@@ -197,7 +215,7 @@ loc:"Brandeis University, August 2015 – present",
 content:"– Grade assignments; hold office hours and answer students’ questions"+"\n"+"– Programming assignment design, hosting tutorial sessions, and provide sample solutions"
 },
 {title: "Contributor (Application Developer)", 
-loc:"Project DressCode, Award winner of the Brandeis University SPARK Program, May 2015 – present", 
+loc:"FashionSnapp, Award winner of the Brandeis University SPARK Program, May 2015 – present", 
 content:"– Rails API Backend development; database design and RESTful API design"+"\n"+"– Frontend development using Angular.js"
 },
 {title: "Data Mining Engineer, Focus Technology Co., Ltd.", 
@@ -223,7 +241,8 @@ content:"Authors: H. Wang, B. Zhu, L Ma, S. Chen, C. Chen, P. Wang"
 {title: "An Application of Recommender System with Mingle-TopN Algorithm on B2B Platform", 
 loc:"The International Conference on Advanced Cloud and Big Data (CBD), Southeast University, Nanjing, China, 13 - 15, December 2013", 
 content:"Authors: P. Xia, J. Xiao, S. Chen"
-}]}])
+}]},
+{section:"SKILLS"}])
 .constant('contact',[{title:"Address:",content:"60 Hope Ave, Apt 101,"+"\n"+"Waltham, Massachusetts, 02453"},
 	{title:"Tel:",content:"(785)424-0893"}])
 

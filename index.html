@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
   <script src="javascripts/app.js"></script>
   <script src="javascripts/d3.js"></script>
@@ -22,12 +23,12 @@
   <header class="inner">
   <a id="forkme_banner" href="https://github.com/shuchenku">View on GitHub</a>
 
-  <h1 id="project_title">Shu's Homepage is UNDER CONSTRUCTION</h1>
+  <h1 id="project_title">Shu's Homepage</h1>
   <h3 id="project_tagline"></h3>
   <ul class="nav nav-pills">
-  <li style="width: 150px; text-align: center"><a ui-sref="profile"><b>About</b></a></li>
-  <li style="width: 150px; text-align: center"><a ui-sref="skills"><b>Skills</b></a></li>
+  <li style="width: 150px; text-align: center"><a ui-sref="profile"><b>About me</b></a></li>
   <li style="width: 150px; text-align: center"><a ui-sref="contact"><b>Contact me</b></a></li>
+  <li style="width: 150px; text-align: center"><a ui-sref="projects"><b>Projects</b></a></li>
   <li style="width: 150px; text-align: center"><a ui-sref="temp"><b>PlaceHolder</b></a></li>
   </ul>
   </header>
@@ -36,7 +37,9 @@
   <!-- MAIN CONTENT -->
   <div id="main_content_wrap" class="outer">
   <section id="main_content" class="inner">
-    <div ui-view></div>  
+    <div class="container-fluid">
+      <div ui-view class="slide"></div> 
+    </div> 
   </section>
   </div>
 
@@ -51,3 +54,35 @@
 
   </body>
   </html>
+
+  <style>
+.slide {
+    -webkit-transition: -webkit-transform .7s ease-in-out;
+    -moz-transition: -moz-transform .7s ease-in-out;
+    -o-transition: -o-transform .7s ease-in-out;
+    transition: transform .7s ease-in-out;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    background: #f2f2f2;
+}
+
+.slide.ng-enter {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    background: #f2f2f2;
+}
+
+.slide.ng-enter.ng-enter-active, .slide.ng-leave {
+    position: absolute;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    background: #f2f2f2;
+}
+
+.slide.ng-leave.ng-leave-active {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    background: #f2f2f2;
+}
+</style>
+
