@@ -19,6 +19,7 @@ I received a M.S. in Atmospheric Science</br> from the University of Kansas</br>
 and a B.S in Atmospheric Science from</br> Nanjing University of Information Science and Technology</h3></br>
 </div>
 
+<h2>More about me:</h2>
 <ul ng-repeat="resume_item in resume_items" ng-click="expand(resume_item)">
  <h2 ng-show="!resume_item.show">&#9658 <t>{{resume_item.section}}</t></h2><h2 ng-show="resume_item.show">&#9660 <t>{{resume_item.section}}</t></h2> 
  <ul ng-show="resume_item.show" ng-repeat="item in resume_item.items">
@@ -26,17 +27,5 @@ and a B.S in Atmospheric Science from</br> Nanjing University of Information Sci
   <b>{{item.loc}}</b>
   <h4><pre>{{item.content}}</pre></h4>
 </ul>
-  <div ng-show="resume_item.show" d3-bars label="name" bar-height="30"></div>
-
 </ul>
-
-<!-- 
-<div style="margin-left: 3%" ng-click="expandChart(skills)">
-<h2 ng-show="!resume_item.show">&#9658 <t>SKILLS</t></h2><h2 ng-show="resume_item.show">&#9660 <t>SKILLS</t></h2> 
-  <div class="fluid-container" ng-show="skills.show" >
-    <div d3-bars label="name" bar-height="30"></div>
-  </div>
-</h2>
-</div> 
-  
- -->
+<div d3-bars ng-show="skills" label="name" bar-height="30"></div>

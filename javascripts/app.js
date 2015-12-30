@@ -4,7 +4,7 @@ angular.module('githubpage',['ngAnimate','ui.router','d3'])
 
 		$scope.resume_items = resume_items;
 		$scope.contact = contact;
-		$scope.skills = "";
+		$scope.skills = false;
 
 		$scope.expand = function(list_items){
 
@@ -14,14 +14,12 @@ angular.module('githubpage',['ngAnimate','ui.router','d3'])
 				list_items.show=true;
 			}
 
-			if (list_items.section=="SKILLS" && !list_items.show) {
+			if (list_items.section==="SKILLS" && list_items.show) {
+				$scope.skills = true;
 				$rootScope.$broadcast("show it!");
+			} else {
+				$scope.skills = false;
 			}
-		}
-
-		$scope.expandChart = function(chart) {
-			$scope.expand(chart);
-			$rootScope.$broadcast("show it!");
 		}
 	}	
 ])
