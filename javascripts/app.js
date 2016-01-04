@@ -1,10 +1,14 @@
 angular.module('githubpage',['ui.router','d3'])
 .controller('basicController',['$rootScope','$scope','resume_items','contact',
-	function($rootScope,$scope,resume_items,contact){
+	function($rootScope,$scope, resume_items,contact){
 
-		$scope.resume_items = resume_items;
-		$scope.contact = contact;
-		$scope.skills = false;
+		$scope.resume_items = resume_items
+		$scope.contact = contact
+		$scope.skills = false
+
+		$scope.resume_items.forEach(function(r) {
+			r.show = false;
+		});
 
 		$scope.expand = function(list_items){
 
@@ -14,11 +18,12 @@ angular.module('githubpage',['ui.router','d3'])
 				list_items.show=true;
 			}
 
-			if ((list_items.section!="SKILLS" && $scope.skills) || (list_items.section==="SKILLS" && list_items.show)) {
-				$scope.skills = true;
-				$rootScope.$broadcast("show it!");
-			} else {
-				$scope.skills = false;
+			if (list_items.section==="SKILLS") {
+				$scope.skills = list_items.show;
+
+				if ($scope.skills) {
+					$rootScope.$broadcast("show it!");
+				}
 			}
 		}
 	}	
@@ -125,7 +130,6 @@ angular.module('githubpage',['ui.router','d3'])
 	        };
 
 	        scope.$on("show it!", function() {
-	          console.log(d3.select(element[0]));
 			  scope.render(scope.data);
 	        })
 
