@@ -1,31 +1,24 @@
 <style>
-h2 {
-  color: #007edf !important
-}
+h2 {color: #007edf !important}
 
-
-t {
-  color: #373737
-}
+t {color: #373737}
 </style>
 
+<div class="jumbotron">
+<h2><t>Hi, My name is</t> Shu Chen.</h2>
+<p>I am a Computer Science M.A. student at Brandeis University.</br>
+I am also working for Mobile Heartbeat LLC. as a Software Engineering Intern.</br></p>
+<p>Before entering the field of Computer Science,</br>
+I received a M.S. in Atmospheric Science from the University of Kansas and a B.S. in Atmospheric Science from Nanjing University of Information Science and Technology</p></br>
 
-<div style="text-align: center">
-<h2>Hi, My name is Shu Chen.</h2>
-<h3>I am a Computer Science M.A. student at Brandeis University.</br>
-I am also working for Mobile Heartbeat LLC.</br>as a Software Engineering Intern.</br></h3>
-<h3>Before entering the field of Computer Science,</br>
-I received a M.S. in Atmospheric Science</br> from the University of Kansas</br>
-and a B.S in Atmospheric Science from</br> Nanjing University of Information Science and Technology</h3></br>
-</div>
-
-<h2>More about me:</h2>
+<h2><t>More about me:</t></h2>
 <ul ng-repeat="resume_item in resume_items" ng-click="expand(resume_item)">
- <h2 ng-show="!resume_item.show">&#9658 <t>{{resume_item.section}}</t></h2><h2 ng-show="resume_item.show">&#9660 <t>{{resume_item.section}}</t></h2> 
- <ul ng-show="resume_item.show" ng-repeat="item in resume_item.items">
-  <li><h3>{{item.title}}</h3></li>
-  <b>{{item.loc}}</b>
+ <h2 ng-show="!resume_item.show">&#9658 {{resume_item.section}}</h2><h2 ng-show="resume_item.show">&#9660 {{resume_item.section}}</h2> 
+ <ul ng-show="resume_item.show" ng-repeat="item in resume_item.items" class="animated fadeIn">
+  <li><p><b>{{item.title}}</b></p></li>
+  <t>{{item.loc}}</t>
   <h4><pre>{{item.content}}</pre></h4>
 </ul>
 </ul>
-<div d3-bars ng-show="skills" label="name" bar-height="30"></div>
+<div d3-bars ng-show="skills" class="animated fadeIn" label="name" bar-height="30"></div>
+</div>

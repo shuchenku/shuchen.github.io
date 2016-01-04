@@ -1,4 +1,4 @@
-angular.module('githubpage',['ngAnimate','ui.router','d3'])
+angular.module('githubpage',['ui.router','d3'])
 .controller('basicController',['$rootScope','$scope','resume_items','contact',
 	function($rootScope,$scope,resume_items,contact){
 
@@ -14,7 +14,7 @@ angular.module('githubpage',['ngAnimate','ui.router','d3'])
 				list_items.show=true;
 			}
 
-			if (list_items.section==="SKILLS" && list_items.show) {
+			if ((list_items.section!="SKILLS" && $scope.skills) || (list_items.section==="SKILLS" && list_items.show)) {
 				$scope.skills = true;
 				$rootScope.$broadcast("show it!");
 			} else {
@@ -29,7 +29,7 @@ angular.module('githubpage',['ngAnimate','ui.router','d3'])
 	])
 .config(function($stateProvider, $urlRouterProvider) {
 
-	$urlRouterProvider.otherwise("/profile");
+	$urlRouterProvider.otherwise("/profil");
 
 	$stateProvider
 	.state('profile', {
@@ -143,7 +143,7 @@ angular.module('githubpage',['ngAnimate','ui.router','d3'])
 
 	          if (!scope.data) return;
 	          // setup variables
-	          var width = d3.select(element[0]).node().parentNode.parentNode.offsetWidth,
+	          var width = (d3.select(element[0]).node().parentNode.parentNode.offsetWidth - margin)*0.8,
 	          // calculate the height
 	          height = scope.data.length * (barHeight + barPadding),
 	    	  // Use the category20() scale function for multicolor support
