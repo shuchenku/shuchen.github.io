@@ -29,7 +29,7 @@ angular.module('githubpage',['ui.router','d3'])
 	])
 .config(function($stateProvider, $urlRouterProvider) {
 
-	$urlRouterProvider.otherwise("/profil");
+	$urlRouterProvider.otherwise("/profile");
 
 	$stateProvider
 	.state('profile', {
