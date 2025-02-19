@@ -245,6 +245,5 @@ loc:"The International Conference on Advanced Cloud and Big Data (CBD), Southeas
 content:"Authors: P. Xia, J. Xiao, S. Chen"
 }]},
 {section:"SKILLS"}])
-.constant('contact',[{title:"Address:",content:"60 Hope Ave, Apt 101,"+"\n"+"Waltham, Massachusetts, 02453"},
-	{title:"Tel:",content:"(785)424-0893"}])
+.constant('contact',[{title:"Location",content:"Boston, Massachusetts"}])
 
